@@ -1,0 +1,230 @@
+
+<mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Select Chapter</ng-template>
+            
+                <!-- <input matInput formControlName="firstCtrl" value={{cc}}> -->
+          
+            <button mat-button [matMenuTriggerFor]="type"  >Select Chapter</button>
+            
+            <mat-menu #type="matMenu">
+                <button mat-menu-item [matMenuTriggerFor]="lec" (mouseover)="_selectType('Lecture')" >Lec</button>
+                <button mat-menu-item [matMenuTriggerFor]="lab" (mouseover)="_selectType('Laboratory')">Lab</button>
+
+            </mat-menu>
+
+            <mat-menu #lec="matMenu">
+                <div *ngFor="let item of items;let i = index">
+                    <button mat-menu-item (click)="_selectChapter(i+1)">Chapter {{i+1}}</button>
+                </div>
+            </mat-menu>
+
+            <mat-menu #lab="matMenu">
+                <div *ngFor="let item of items;let i = index">
+                    <button mat-menu-item (click)="_selectChapter(i+1)">Chapter {{i+1}}</button>
+                </div>
+            </mat-menu>
+            <div>
+                    <div *ngIf="chapter != 'Select Chapter'">
+                            <button mat-button matStepperNext >Next</button>
+                    </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" >
+        <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Add Question</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Question:" formControlName="secondquesCtrl">
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <mat-form-field>
+                    <input matInput placeholder="Choice 1: " formControlName="secondch1Ctrl">
+                    <mat-divider></mat-divider>
+                    <mat-slide-toggle (click)="_selectch1(1)"></mat-slide-toggle>
+                    
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <mat-form-field>
+                    <input matInput placeholder="Choice 2:" formControlName="secondch2Ctrl">
+                    <mat-slide-toggle (click)="_selectch2(2)"></mat-slide-toggle>
+                    
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <mat-form-field>
+                    <mat-slide-toggle (click)="_selectch3(3)"></mat-slide-toggle>
+                    <input matInput placeholder="Choice 3:" formControlName="secondch3Ctrl">
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <mat-form-field>
+                    <mat-slide-toggle (click)="_selectch4(4)"></mat-slide-toggle>
+                    <input matInput placeholder="Choice 4:" formControlName="secondch4Ctrl">
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <mat-form-field>
+                    <input matInput placeholder="Answer  :">
+                </mat-form-field>
+            
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
+
+<mat-card>
+        <mat-card-content>
+          <h2 class="example-h2">Item bank</h2>
+          <mat-tab-group class="demo-tab-group">
+            <mat-tab label="Chapter 1">
+              <div class="demo-tab-content">
+    
+                  <mat-accordion>
+                      <mat-expansion-panel>
+                        <!-- Loop query all item in chapter -->
+    
+    
+                        <mat-expansion-panel-header>
+    
+                          <mat-panel-title>
+                            Personal data
+                          </mat-panel-title>
+    
+                          <mat-panel-description>
+                            Type your name and age
+                          </mat-panel-description>
+    
+                        </mat-expansion-panel-header>
+                    
+    
+    
+                        <mat-form-field>
+                          <input matInput placeholder="First name">
+                        </mat-form-field>
+                    
+                        <mat-form-field>
+                          <input matInput placeholder="Age">
+                        </mat-form-field>
+    
+    
+    
+                      </mat-expansion-panel>
+    
+    
+                      
+    
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                           (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Self aware panel
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>I'm visible because I am open</p>
+                      </mat-expansion-panel>
+    
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                           (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Self aware panel
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>I'm visible because I am open</p>
+                      </mat-expansion-panel>
+    
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                           (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Self aware panel
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>I'm visible because I am open</p>
+                      </mat-expansion-panel>
+                      
+                    </mat-accordion>
+    
+              </div>
+            </mat-tab>
+            <mat-tab label="Chapter 2">
+              <div class="demo-tab-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+                Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+                In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
+                feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
+                orci enim rutrum enim, vel tempor sapien arcu a tellus.
+              </div>  
+            </mat-tab>
+            <mat-tab label="Chapter 3">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 4">
+              <div class="demo-tab-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+                Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+                In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
+                feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
+                orci enim rutrum enim, vel tempor sapien arcu a tellus.
+                <br />
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+                Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+                In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
+                feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
+                orci enim rutrum enim, vel tempor sapien arcu a tellus.
+              </div>  
+            </mat-tab>
+            <mat-tab label="Chapter 5">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 6">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 7">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 8">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 9">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 10">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 11">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 12">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 13">
+              No content  
+            </mat-tab>
+            <mat-tab label="Chapter 14">
+              No content  
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+      

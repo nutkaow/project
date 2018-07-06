@@ -1,0 +1,14 @@
+<!-- <p>
+  You are authenticated!. Hello {{name}}
+  <a routerLink="/">Go back</a>
+</p> -->
+<app-header></app-header>
+<mat-drawer-container class="example-container">
+    <mat-drawer class="sidebar" mode="side" opened="true">
+    <app-sidebar></app-sidebar>
+        
+    </mat-drawer>
+    <mat-drawer-content class="main-content">
+      <app-create-exam></app-create-exam>
+    </mat-drawer-content>
+  </mat-drawer-container>

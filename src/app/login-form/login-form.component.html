@@ -1,0 +1,14 @@
+
+<form >
+  <div class="input">
+    <label>Username</label>
+    <input type="text" [(ngModel)]="data[0]" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="input">
+    <label>Password</label>
+    <input type="text" [(ngModel)]="data[1]" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="input">
+    <input type="button" value="login" (click)="_loginUser($event)">
+  </div>
+</form>

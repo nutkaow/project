@@ -1,0 +1,89 @@
+<div class="container">
+    <mat-horizontal-stepper [linear]="!isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Select Chapter</ng-template>
+                
+                <button mat-button [matMenuTriggerFor]="Semester" >{{semester}}</button>
+                <mat-menu #Semester="matMenu">
+                    <div *ngFor="let sem of semesters;">
+                        <button mat-menu-item (click)="_selectSemester(sem)" >Semester {{sem}}</button>
+                    </div>
+                </mat-menu>
+
+                <button mat-button [matMenuTriggerFor]="Term">{{term}}</button>
+                <mat-menu #Term="matMenu">
+                    <div *ngFor="let t of terms;">
+                        <button mat-menu-item (click)="_selectTerm(t)">{{t}}</button>
+                    </div>
+                </mat-menu>
+
+                <button mat-button [matMenuTriggerFor]="Year" (click)="_setYear()">{{year}}</button>
+                <mat-menu #Year="matMenu">
+                    <div *ngFor="let y of setyear;">
+                        <button mat-menu-item (click)="_selectYear(y)">{{y}}</button>
+                    </div>
+                </mat-menu>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Input Number Each Subject</ng-template>
+                <!-- spinner -->
+                
+                <div class="spin">
+
+
+                    <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value">
+                    </mat-progress-spinner>
+                    <div class="spintext">{{ numitem }} / 120</div>
+                    
+                    
+
+                </div>
+
+
+                <mat-grid-list cols="2" rowHeight="22:1">
+                    <div *ngFor="let type of types;let i = index">
+                        <mat-grid-tile>
+                                <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                                <mat-card>{{type}}</mat-card>
+                        </mat-grid-tile>
+                    </div>
+                    <div *ngFor="let number of numbers;let i = index ;trackBy:trackByIndex;" >
+                        <mat-grid-tile>
+                            <mat-card>{{number}} :
+                                <mat-form-field>
+                                    <input matInput  placeholder="0" autocomplete="off" (change)="_change($event)" [(ngModel)]="test[i]" [ngModelOptions]="{standalone: true}">       
+                                </mat-form-field>
+                            </mat-card>
+                        </mat-grid-tile>
+                    </div>
+                </mat-grid-list>
+                
+
+
+
+
+                      
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+                <button class="btn1">asd</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+    <div>

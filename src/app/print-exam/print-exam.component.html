@@ -1,0 +1,44 @@
+<button id="butt" type="button" (click)="downloadPDF()" class="btn btn-warning btn-sm">Download results</button>
+ 
+<mat-card class="example-card">
+<mat-card-content>
+  display mat table here
+  </mat-card-content>
+</mat-card>
+  
+    
+        <table id="content" >
+            <tr>
+              <td>Name: _______________________________________ Code: ___________________</td>
+            </tr>
+            <div *ngFor="let row of tiles; let i = index">
+              <tr>
+                
+              <div><br></div>
+              <div>{{row.question}}</div>
+              <div><br></div>
+              <div>{{row.ch1}}</div>
+              <div><br></div>
+              <div>{{row.ch2}}</div>
+              <div><br></div>
+              <div>{{row.ch3}}</div>
+              <div><br></div>
+              <div>{{row.ch4}}</div>
+              
+               
+               </tr>
+            </div>
+            
+   </table>
+  
+
+
+
+
+
+   <!-- <img src="https://images-na.ssl-images-amazon.com/images/I/41NwjzuqQvL._SY463_.jpg" width="42" height="42"> -->
+
+  
+
+  
+<!-- <button type="button" (click)="downloadPDF()"> Export to PDF</button> -->

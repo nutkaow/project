@@ -1,0 +1,23 @@
+.btn1 {
+    color : rgb(255, 255, 255);
+    background-color: rgba(0, 11, 107, 0.96);
+    border-radius: 10px 0 0 10px;
+    font-size: 16px;
+  }
+
+.spin{
+    position:relative;
+    left: 50%; 
+    color : rgb(255, 0, 157)
+}
+
+.spintext{
+    position:relative;
+    top:-60px ; 
+    left: 1%;
+}
+  
+.example-header-image {
+    background-image: url('https://st2.depositphotos.com/2650957/9518/i/950/depositphotos_95183588-stock-photo-lab-or-laboratory-word-on.jpg');
+    background-size: cover;
+}

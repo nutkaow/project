@@ -1,0 +1,53 @@
+  <mat-card>
+    <mat-card-content>
+      <h2 class="example-h2">Manage Teacher</h2>
+      <mat-tab-group class="demo-tab-group">
+        <mat-tab label="Tab 1" (click)="_call_id_gen($event)">
+          <ng-template mat-tab-label>
+            <mat-icon>person_add</mat-icon>
+          </ng-template>
+          
+            <div>
+
+              <input matInput  [(ngModel)]="info_teacher[0]" >       
+            </div>
+            <div>
+              <input matInput  placeholder="Password" autocomplete="off" (change)="_change($event)" [(ngModel)]="info_teacher[1]">                     
+            </div>
+            <div>
+              <input matInput  placeholder="NAME" autocomplete="off"  (change)="_change($event)" [(ngModel)]="info_teacher[2]">       
+            </div>
+            <div>
+              <input matInput  placeholder="EMAIL" autocomplete="off" (change)="_change($event)" [(ngModel)]="info_teacher[3]">       
+            </div>
+          
+        </mat-tab>
+        <mat-tab label="Tab 2">
+          <ng-template mat-tab-label>
+            <mat-icon>remove</mat-icon>
+            <mat-icon>person</mat-icon>
+          </ng-template>
+          <div class="demo-tab-content">
+              
+          </div>  
+        </mat-tab>
+        <mat-tab label="Tab 3">
+          <ng-template mat-tab-label>
+            <mat-icon>update</mat-icon>
+          </ng-template>
+          No content  
+        </mat-tab>
+        
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-tile
+          *ngFor="let tile of tiles"
+          [colspan]="tile.cols"
+          [rowspan]="tile.rows"
+          [style.background]="tile.color">
+          <button mat-menu-item >{{tile.text}}</button>
+      </mat-grid-tile>
+    </mat-grid-list>
